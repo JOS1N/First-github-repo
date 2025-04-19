@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zito Muay Thai</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #000000; color: #fff; }
+    
+    /* Cabeçalho modificado */
+    header { 
+      background-color: #080808; 
+      padding: 1rem 2rem; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo {
+      height: 60px;
+      width: auto;
+    }
+    
+    .logo-link {
+      text-decoration: none;
+      color: #fff; /* Adicionado para manter a cor do texto */
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    nav a { 
+      color: #fff; 
+      text-decoration: none; 
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    
+    /* Restante do seu CSS permanece igual */
+    .hero {
+      background-image: url("20250411_200636.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      
+      padding: 1rem;
+      
+    }
+    section { padding: 2rem; }
+    .section-title { font-size: 2rem; margin-bottom: 1rem; text-align: center; }
+    .btn {
+      background-color: #e62e00;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .about, .benefits, .contact, .footer, .classes-section, .testimonials, .location-map { max-width: 1000px; margin: auto; }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .classes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .class-card {
+      background-color: #222;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .class-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-card {
+      background-color: #1c1c1c;
+      border-left: 4px solid #e62e00;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+        padding: 0.5rem;
+      }
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    } 
+       :root {
+            --primary: #e62e00;
+            --secondary: #1a73e8;
+            --bg: #ffffff;
+            --card-bg: #040303;
+            --text: #202124;
+            --border: #ffffff;
+            --muaythai: #d23f31;
+            --jiujitsu: #1e8e3e;
+            --whatsapp: #25D366;
+       }
+       .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        .master-name {
+            font-size: 1.2em;
+            color: red;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            min-width: 1000px;
+        }
+        
+        .day-column {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .day-header {
+            background-color: var(--primary);
+            color: rgb(255, 255, 255);
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .day-events {
+            padding: 10px;
+            min-height: 300px;
+        }
+        
+        .event {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 4px solid var(--muaythai);
+            background-color: #252525;
+        }
+        
+        .event.jiujitsu {
+            border-left-color: var(--jiujitsu);
+        }
+        
+        .event-time {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        
+        .event-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        
+        .event-meta {
+            font-size: 0.8em;
+            color: #5f6368;
+            margin-top: 5px;
+        }
+        
+        .modalidade {
+            display: inline-block;
+            padding: 2px 6px;
+            background-color: var(--muaythai);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.7em;
+            margin-left: 8px;
+        }
+        
+        .jiujitsu-tag {
+            background-color: var(--jiujitsu);
+        }
+        
+        .today {
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        
+        @media (max-width: 1200px) {
+            .container {
+                overflow-x: scroll;
+            }
+            
+            .week-grid {
+                min-width: 1200px;
+            }
+          }
+          .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-float i {
+            font-size: 36px;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            background-color: white;
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-float i {
+                font-size: 30px;
+            }
+        }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo-link">
+      <img src="logo.png" alt="Logo Zito Muay Thai" class="logo">
+      <h1>Zito Muay Thai</h1>
+    </a>
+    
+    <nav>
+      <a href="#about">Sobre</a>
+      <a href="#benefits">Benefícios</a>
+      <a href="#classes">Aulas</a>
+      <a href="#contact">Contato</a>
+    </nav>
+  </header>
+
+  <!-- Restante do seu HTML permanece igual -->
+  <div class="hero">
+  </div>
+
+  
+  <section id="about" class="about">
+    <H1 class="section-title">Treine Muay thai com os melhores</H1>
+    <h2 class="section-title">Sobre</h2>
+    <h3 class="section-title">Benefícios do Muay Thai para Saúde Física e Mental</h3>
+    <p>O Muay Thai, também conhecido como "arte das oito armas" (punhos, cotovelos, joelhos e canelas), é uma das artes marciais mais completas e eficazes. Além de ser um esporte de combate, oferece inúmeros benefícios para o corpo e a mente.</p>
+  </section>
+
+  <section id="benefits" class="benefits">
+    <h2 class="section-title">Benefícios Físicos do Muay Thai</h2>
+    <ul>
+      <li>Emagrecimento e Queima de Gordura - Uma aula intensa pode queimar entre 700 e 1.000 calorias além de acelera o metabolismo, ajudando na perda de peso.</li>
+      <li>Melhora o Condicionamento Físico - Aumenta resistência cardiovascular (aeróbica e anaeróbica).Fortalece músculos, especialmente pernas, core, braços e costas. </li>
+      <li>Tonificação Muscular - Trabalha todo o corpo, definindo braços, pernas e abdômen além de melhora a força e a explosão muscular.</li>
+      <li>Melhora da Flexibilidade e Coordenação Motora - Movimentos como chutes e esquivas aumentam a flexibilidade e desenvolve reflexos rápidos e equilíbrio.</li>
+      <li>Defesa Pessoal - Ensina técnicas eficientes para autodefesa além de aumenta a confiança em situações de risco.</li>
+    </ul>
+  </section>
+  <section id="benefits" class="benefits">
+    <h2 class="section-title">Benefícios Mentais e Emocionais</h2>
+    <ul>
+      <li>Redução do Estresse e Ansiedade - Libera endorfina, hormônio do bem-estar e ajuda a aliviar tensões do dia a dia.</li>
+      <li>Disciplina e Foco - Exige concentração nos treinos, melhorando a mente e a desenvolver perseverança e autocontrole.</li>
+      <li>Autoconfiança e Autoestima - Superar desafios nos treinos aumenta a autoconfiança e melhora a postura e a segurança pessoal.</li>
+      <li>Socialização e Trabalho em Equipe - Aulas em grupo criam amizades e senso de comunidade além de incentiva o respeito e a humildade.</li>
+    </ul>
+
+  </section>
+  <section id="benefits" class="benefits">
+    <h2 class="section-title">Benefícios para a Saúde</h2>
+    <ul>
+      <li>Melhora a saúde cardiovascular (reduz risco de doenças cardíacas).</li>
+      <li>Fortalece ossos e articulações (prevenindo osteoporose).</li>
+      <li>Ajuda no controle da pressão arterial e diabetes.</li>
+      <li>Melhora a qualidade do sono.</li>
+    </ul>
+  </section>
+
+  <section id="classes" class="classes-section">
+    <h2 class="section-title">Aulas</h2>
+    <div class="container">
+      <header>
+          <h1>Agenda Semanal de Treinos</h1>
+          <div class="master-name">Academia Mestre Bruno Roverso</div>
+      </header>
+      
+      <div class="week-grid">
+          <!-- Segunda-feira -->
+          <div class="day-column">
+              <div class="day-header">Segunda</div>
+              <div class="day-events">
+                  <div class="event">
+                      <div class="event-time">08:00 - 09:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Manhã<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">16:00 - 17:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Tarde<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">18:00 - 19:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">19:00 - 20:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event jiujitsu">
+                      <div class="event-time">20:00 - 21:00</div>
+                      <div class="event-title">
+                          Jiu-Jitsu
+                          <span class="modalidade jiujitsu-tag">JJ</span>
+                      </div>
+                      <div class="event-meta">
+                          Adulto<br>
+                          Mestre Bruno
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Terça-feira -->
+          <div class="day-column">
+              <div class="day-header">Terça</div>
+              <div class="day-events">
+                  <div class="event">
+                      <div class="event-time">07:00 - 08:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Manhã<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">10:00 - 11:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Manhã<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">14:00 - 15:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Tarde<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">17:00 - 18:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Tarde<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  <div class="event">
+                    <div class="event-time">18:00 - 19:00</div>
+                    <div class="event-title">
+                        Muay Thai
+                        <span class="modalidade">MT</span>
+                    </div>
+                    <div class="event-meta">
+                        Noturno<br>
+                        Mestre Bruno Roverso
+                    </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">19:00 - 20:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">20:00 - 21:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noite<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Quarta-feira -->
+          <div class="day-column">
+              <div class="day-header">Quarta</div>
+              <div class="day-events">
+                  <div class="event">
+                      <div class="event-time">08:00 - 09:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Manhã<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">16:00 - 17:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Tarde<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">18:00 - 19:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noite<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">19:00 - 20:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event jiujitsu">
+                      <div class="event-time">20:00 - 21:00</div>
+                      <div class="event-title">
+                          Jiu-Jitsu
+                          <span class="modalidade jiujitsu-tag">JJ</span>
+                      </div>
+                      <div class="event-meta">
+                          Adulto<br>
+                          Mestre Bruno
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Quinta-feira -->
+          <div class="day-column">
+              <div class="day-header">Quinta</div>
+              <div class="day-events">
+                  <div class="event">
+                      <div class="event-time">07:00 - 08:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Manhã<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">10:00 - 11:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Manhã<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">14:00 - 15:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Tarde<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">17:00 - 18:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Tarde<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">18:00 - 19:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">19:00 - 20:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">20:00 - 21:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Sexta-feira -->
+          <div class="day-column">
+              <div class="day-header">Sexta</div>
+              <div class="day-events">
+                  <div class="event">
+                      <div class="event-time">08:00 - 09:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Manhã<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">16:00 - 17:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Tarde<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">18:00 - 19:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">20:00 - 21:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Noturno<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Sábado -->
+          <div class="day-column">
+              <div class="day-header">Sábado</div>
+              <div class="day-events">
+                  <div class="event">
+                      <div class="event-time">10:00 - 11:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Sparing<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+                  
+                  <div class="event">
+                      <div class="event-time">14:00 - 15:00</div>
+                      <div class="event-title">
+                          Muay Thai
+                          <span class="modalidade">MT</span>
+                      </div>
+                      <div class="event-meta">
+                          Sparing<br>
+                          Mestre Bruno Roverso
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
+
+  <section class="location-map">
+    <h2 class="section-title">Localização</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3604.2784372267142!2d-49.23485342494933!3d-25.395488731526527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce67775140e5b%3A0x3c78beadee28051c!2sMuay%20Thai%20Zito%20Fight%20Team%20Bacacheri!5e0!3m2!1spt-BR!2sbr!4v1745009788278!5m2!1spt-BR!2sbr" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Entre em Contato</h2>
+    <p>Telefone: (41) 98817-5965</p>
+    <p>Email: zitomuaythai@gmail.com</p>
+    
+  </section>
+  <a href="https://wa.me/5541988175965" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Agende sua aula!</span>
+</a>
+
+  <footer class="footer">
+    <p>&copy; 2025 Zito Muay Thai. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const section = document.querySelector(this.getAttribute('href'));
+        section.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
